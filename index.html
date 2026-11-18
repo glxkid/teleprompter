@@ -1,0 +1,43 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Teleprompter</title>
+<style>
+body{margin:0;background:#000;color:#fff;font-family:Arial,sans-serif}
+#bar{position:fixed;top:0;left:0;right:0;background:#222;padding:8px;display:flex;gap:10px;align-items:center;z-index:9;font-size:16px}
+#bar button{font-size:18px;padding:6px 14px}
+#t{padding:40vh 12vw 80vh;font-size:56px;line-height:1.5;transform-origin:center}
+h2{color:#f5c542;font-size:32px;margin-top:80px}
+p{margin:0 0 40px}
+.mirror{transform:scaleX(-1)}
+</style></head><body>
+<div id="bar"><button id="go">Start / Pause (Space)</button>
+Speed <input type="range" id="sp" min="1" max="10" value="3">
+Text size <input type="range" id="sz" min="30" max="110" value="56">
+<button id="mi">Mirror</button><button id="tp">Top</button></div>
+<div id="t">
+<h2>[SLIDE 1: A Wearable Chair for Surgeons]</h2>
+<p>Hi everyone, I&#39;m Adriel Luis-Hernandez. My artifact is a device called the Archelis, which is basically a wearable chair. It was designed by the company Nitto together with Chiba University. You wear it on your legs, you can walk normally, and then you can lock it into a seated position anywhere you stand. The man in this photo is Dr. Faustino Afonso, a surgeon in Spain, wearing it.</p>
+<h2>[SLIDE 2: What Happened: A Surgery, Standing Up]</h2>
+<p>Here&#39;s why I picked it. On July 11, 2023, Dr. Afonso took part as an assistant in a four-hour operation at the Doctor Aguiar Institute of Plastic and Aesthetic Surgery. Standing for hours is a basic expectation in surgery, and his disability had kept him from certain procedures. The ONCE Foundation supplied the unit, and with it he could stay on his feet, or lock into a seat, for the whole operation. News coverage called it a first, and that&#39;s the part that interests me. It was a first in 2023, which tells us how long the operating room has assumed one kind of body.</p>
+<h2>[SLIDE 3: Baynton: Disability Is Everywhere]</h2>
+<p>This connects to our reading from Douglas Baynton, who writes, quote, &quot;Disability is everywhere, once you begin looking for it, but conspicuously absent in the histories we write.&quot; Surgeons with disabilities exist. But the operating room is built for a standing, non-disabled body, so a disabled surgeon is easy to leave out of the picture, and out of the room.</p>
+<h2>[SLIDE 4: Keyword 1: Access]</h2>
+<p>My first keyword from Keywords for Disability Studies is Access. In my own words, access is whether a space, tool, or opportunity is actually usable by people with different bodies, not just open on paper. On paper, the operating room was open to Dr. Afonso. In practice, real access only came when a charity lent him a device. So the access didn&#39;t come from the room. It came from an add-on to him. To me, access should be built into the room, not earned through a special device.</p>
+<h2>[SLIDE 5: What Needs to Improve]</h2>
+<p>That leads to what needs to improve. First, the fix is personal: it&#39;s a device for one surgeon, not a redesigned workplace. Second, cost and availability. Exoskeletons are still expensive and not widely available. Third, it depended on charity, because the ONCE Foundation lent the unit. So the question I want to leave with you is: should the burden sit on the individual surgeon?</p>
+<h2>[SLIDE 6: Keyword 2 and Course Text: Independence]</h2>
+<p>My second keyword is Independence. We usually think of independence as doing everything alone. But everyone depends on tools, people, and buildings. Nobody operates without lights, instruments, and a team. The exoskeleton is just one more tool, so it&#39;s odd that it gets treated as special help.</p>
+<p>I also want to bring in Georgina Kleege. A device that lets a disabled person match a non-disabled standard can end up justifying their place only through ability. That risk is here too. The story is told as &quot;he can do surgery standing, just like everyone else,&quot; which can quietly suggest he belongs only because he matches the standard. From the social model, the barrier is the environment, not the surgeon.</p>
+<h2>[SLIDE 7: Discussion Questions]</h2>
+<p>I have two questions for you. One: who should pay for and design accessibility in a workplace like the operating room, the individual or the institution? Two: does a high-tech device like an exoskeleton solve the problem, or does it let institutions avoid redesigning spaces?</p>
+<h2>[SLIDE 8: Sources]</h2>
+<p>My sources are on the last slide, including Science Times, our course texts, Keywords for Disability Studies, and the photo credits. Thank you.</p>
+</div>
+<script>
+let run=false;const t=document.getElementById('t');
+function tick(){ if(run){ window.scrollBy(0,document.getElementById('sp').value*0.4);} requestAnimationFrame(tick);} tick();
+function tog(){run=!run}
+go.onclick=tog;
+document.addEventListener('keydown',e=>{if(e.code=='Space'){e.preventDefault();tog()} if(e.code=='ArrowUp')sp.value=+sp.value+1; if(e.code=='ArrowDown')sp.value=+sp.value-1;});
+sz.oninput=()=>t.style.fontSize=sz.value+'px';
+mi.onclick=()=>t.classList.toggle('mirror');
+tp.onclick=()=>window.scrollTo(0,0);
+</script></body></html>
